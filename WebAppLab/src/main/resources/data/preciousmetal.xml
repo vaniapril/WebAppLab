@@ -1,0 +1,35 @@
+<ArrayList>
+    <item>
+        <type>preciousmetal</type>
+        <uuid>5720a52b-1ea1-4bb0-9eb7-9ab5f3b6811e</uuid>
+        <name>Gold</name>
+        <price>
+            <high52week>2072.5</high52week>
+            <low52week>1460.7</low52week>
+            <current>1811.4</current>
+        </price>
+        <code>XAU</code>
+    </item>
+    <item>
+        <type>preciousmetal</type>
+        <uuid>5ddfac11-a906-401a-89ed-ac632d4235a7</uuid>
+        <name>Silver</name>
+        <price>
+            <high52week>29.42</high52week>
+            <low52week>11.77</low52week>
+            <current>25.91</current>
+        </price>
+        <code>XAG</code>
+    </item>
+    <item>
+        <type>preciousmetal</type>
+        <uuid>7ebffd96-fc56-4380-a61d-75fbbcc4e5e8</uuid>
+        <name>Platinum</name>
+        <price>
+            <high52week>1333.3</high52week>
+            <low52week>585.2</low52week>
+            <current>1213.34</current>
+        </price>
+        <code>XPT</code>
+    </item>
+</ArrayList>

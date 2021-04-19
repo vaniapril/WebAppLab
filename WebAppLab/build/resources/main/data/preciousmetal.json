@@ -1,0 +1,35 @@
+[
+  {
+    "type": "preciousmetal",
+    "uuid": "5720a52b-1ea1-4bb0-9eb7-9ab5f3b6811e",
+    "name": "Gold",
+    "price": {
+      "high52week": 2072.5,
+      "low52week": 1460.7,
+      "current": 1811.4
+    },
+    "code": "XAU"
+  },
+  {
+    "type": "preciousmetal",
+    "uuid": "5ddfac11-a906-401a-89ed-ac632d4235a7",
+    "name": "Silver",
+    "price": {
+      "high52week": 29.42,
+      "low52week": 11.77,
+      "current": 25.91
+    },
+    "code": "XAG"
+  },
+  {
+    "type": "preciousmetal",
+    "uuid": "7ebffd96-fc56-4380-a61d-75fbbcc4e5e8",
+    "name": "Platinum",
+    "price": {
+      "high52week": 1333.3,
+      "low52week": 585.2,
+      "current": 1213.34
+    },
+    "code": "XPT"
+  }
+]

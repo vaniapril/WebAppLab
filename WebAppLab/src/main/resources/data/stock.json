@@ -1,0 +1,35 @@
+[
+  {
+    "type": "stock",
+    "uuid": "883443ec-6df1-49be-8aff-35416ed96853",
+    "name": "Microsoft",
+    "price": {
+      "high52week": 261.48,
+      "low52week": 166.11,
+      "current": 260.74
+    },
+    "code": "MSFT"
+  },
+  {
+    "type": "stock",
+    "uuid": "55c0295c-cfab-42c0-8b4d-610aaef55773",
+    "name": "Apple",
+    "price": {
+      "high52week": 145.09,
+      "low52week": 53.15,
+      "current": 126.0
+    },
+    "code": "AAPL"
+  },
+  {
+    "type": "stock",
+    "uuid": "411a8de8-aaa8-427a-9dec-22c99a1eaefb",
+    "name": "Tesla",
+    "price": {
+      "high52week": 900.4,
+      "low52week": 70.1,
+      "current": 693.73
+    },
+    "code": "TSLA"
+  }
+]

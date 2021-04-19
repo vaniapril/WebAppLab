@@ -1,0 +1,38 @@
+[
+  {
+    "type": "monetaryunit",
+    "uuid": "b206fe10-f238-459b-abfd-676ebd7ccbbe",
+    "name": "USDollar",
+    "price": {
+      "high52week": 1.0,
+      "low52week": 1.0,
+      "current": 1.0
+    },
+    "code": "USD",
+    "country": "United States"
+  },
+  {
+    "type": "monetaryunit",
+    "uuid": "23b147eb-8eaa-4fb8-9491-68627b50fa22",
+    "name": "Russian Ruble",
+    "price": {
+      "high52week": 81.39,
+      "low52week": 68.04,
+      "current": 72.82
+    },
+    "code": "RUB",
+    "country": "Russia"
+  },
+  {
+    "type": "monetaryunit",
+    "uuid": "fb1675fa-8f48-4538-9f62-6c2de2b166aa",
+    "name": "Belarusian Ruble",
+    "price": {
+      "high52week": 2.68,
+      "low52week": 2.33,
+      "current": 2.59
+    },
+    "code": "BYN",
+    "country": "Belarus"
+  }
+]

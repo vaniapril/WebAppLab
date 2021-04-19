@@ -1,0 +1,38 @@
+<ArrayList>
+    <item>
+        <type>monetaryunit</type>
+        <uuid>b206fe10-f238-459b-abfd-676ebd7ccbbe</uuid>
+        <name>USDollar</name>
+        <price>
+            <high52week>1.0</high52week>
+            <low52week>1.0</low52week>
+            <current>1.0</current>
+        </price>
+        <code>USD</code>
+        <country>United States</country>
+    </item>
+    <item>
+        <type>monetaryunit</type>
+        <uuid>23b147eb-8eaa-4fb8-9491-68627b50fa22</uuid>
+        <name>Russian Ruble</name>
+        <price>
+            <high52week>81.39</high52week>
+            <low52week>68.04</low52week>
+            <current>72.82</current>
+        </price>
+        <code>RUB</code>
+        <country>Russia</country>
+    </item>
+    <item>
+        <type>monetaryunit</type>
+        <uuid>fb1675fa-8f48-4538-9f62-6c2de2b166aa</uuid>
+        <name>Belarusian Ruble</name>
+        <price>
+            <high52week>2.68</high52week>
+            <low52week>2.33</low52week>
+            <current>2.59</current>
+        </price>
+        <code>BYN</code>
+        <country>Belarus</country>
+    </item>
+</ArrayList>
