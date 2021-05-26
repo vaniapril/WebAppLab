@@ -1,9 +1,6 @@
 package models.DAOs.proxy;
 
-import models.DAOs.AbstractDao;
-import models.DAOs.CsvDao;
-import models.DAOs.JsonDao;
-import models.DAOs.XMLDao;
+import models.DAOs.*;
 import models.units.FinancialUnit;
 
 import java.io.File;
@@ -29,6 +26,13 @@ public class ProxyFabric<T extends FinancialUnit> {
                 CsvDao.class.getClassLoader(),
                 new Class[]{AbstractDao.class},
                 new DaoProxyHandler<>(new CsvDao<T>(file, clazz))
+        );
+    }
+    public AbstractDao<T> getDBDaoProxy(Class clazz) throws Exception{
+        return (AbstractDao<T>) Proxy.newProxyInstance(
+                DBDao.class.getClassLoader(),
+                new Class[]{AbstractDao.class},
+                new DaoProxyHandler<>(new DBDao<T>(clazz))
         );
     }
 }

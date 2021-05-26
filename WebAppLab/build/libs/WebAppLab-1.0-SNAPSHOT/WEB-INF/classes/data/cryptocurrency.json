@@ -1,0 +1,35 @@
+[
+  {
+    "type": "cryptocurrency",
+    "uuid": "d2de927f-116e-418e-9d9a-0e80f14a4f94",
+    "name": "Bitcoin",
+    "price": {
+      "high52week": 58354.14,
+      "low52week": 4000.0,
+      "current": 53289.81
+    },
+    "code": "BTC"
+  },
+  {
+    "type": "cryptocurrency",
+    "uuid": "e313a84d-cfb8-4682-915f-bc2b25863c0c",
+    "name": "Ethereum",
+    "price": {
+      "high52week": 2036.29,
+      "low52week": 105.17,
+      "current": 1794.02
+    },
+    "code": "ETH"
+  },
+  {
+    "type": "cryptocurrency",
+    "uuid": "839ba4ac-68df-4321-9bbb-d44b735a948c",
+    "name": "Binance coin",
+    "price": {
+      "high52week": 333.46,
+      "low52week": 11.42,
+      "current": 256.82
+    },
+    "code": "BNB"
+  }
+]

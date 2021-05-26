@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import models.units.components.Identifiable;
 import models.units.components.Price;
+
+import javax.persistence.*;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -17,12 +20,19 @@ import models.units.components.Price;
         @Type(value = PreciousMetal.class, name = "preciousmetal"),
         @Type(value = Stock.class, name = "stock")
 })
-abstract public class FinancialUnit {
+
+@MappedSuperclass
+@Entity
+abstract public class FinancialUnit implements Identifiable<String> {
     public String type;
+    @Id
     public String uuid;
+    @Column(name = "name")
     public String name;
     @JsonSerialize
+    @Embedded
     public Price price;
+    @Column(name = "code")
     public String code;
 
     public String getType() {
@@ -34,11 +44,11 @@ abstract public class FinancialUnit {
     }
 
     public String getUuid() {
-        return uuid;
+        return getId();
     }
 
     public void setUuid(String uuid) {
-        this.uuid = uuid;
+        setId(uuid);
     }
 
     public String getName() {
@@ -74,5 +84,16 @@ abstract public class FinancialUnit {
         this.code = code;
     }
 
+    public abstract void update(FinancialUnit unit) throws Exception;
 
+
+    @Override
+    public String getId() {
+        return uuid;
+    }
+
+    @Override
+    public void setId(String id) {
+        uuid = id;
+    }
 }

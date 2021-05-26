@@ -1,6 +1,7 @@
 package servlets;
 
 import models.exceptions.ExceptionMessage;
+import models.exceptions.ServletLayerException;
 import models.units.Cryptocurrency;
 import models.units.MonetaryUnit;
 import services.CryptocurrencyService;
@@ -37,26 +38,34 @@ public class MonetaryUnitServlet extends HttpServlet {
     }
 
     private void save(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String uuid = request.getParameter("uuid");
-        String name = request.getParameter("name");
-        double high52week = Double.parseDouble(request.getParameter("high52week"));
-        double low52week = Double.parseDouble(request.getParameter("low52week"));
-        double current = Double.parseDouble(request.getParameter("current"));
-        String code = request.getParameter("code");
-        String country = request.getParameter("country");
-        MonetaryUnitService.sharedInstance().update(new MonetaryUnit(uuid, name, high52week, low52week, current, code, country));
-        doGet(request, response);
+        try {
+            String uuid = request.getParameter("uuid");
+            String name = request.getParameter("name");
+            double high52week = Double.parseDouble(request.getParameter("high52week"));
+            double low52week = Double.parseDouble(request.getParameter("low52week"));
+            double current = Double.parseDouble(request.getParameter("current"));
+            String code = request.getParameter("code");
+            String country = request.getParameter("country");
+            MonetaryUnitService.sharedInstance().update(new MonetaryUnit(uuid, name, high52week, low52week, current, code, country));
+            doGet(request, response);
+        } catch (NumberFormatException e){
+            throw new ServletLayerException();
+        }
     }
 
     private void create(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String name = request.getParameter("name");
-        double high52week = Double.parseDouble(request.getParameter("high52week"));
-        double low52week = Double.parseDouble(request.getParameter("low52week"));
-        double current = Double.parseDouble(request.getParameter("current"));
-        String code = request.getParameter("code");
-        String country = request.getParameter("country");
-        MonetaryUnitService.sharedInstance().create(new MonetaryUnit(UUID.randomUUID().toString(), name, high52week, low52week, current, code, country));
-        doGet(request, response);
+        try {
+            String name = request.getParameter("name");
+            double high52week = Double.parseDouble(request.getParameter("high52week"));
+            double low52week = Double.parseDouble(request.getParameter("low52week"));
+            double current = Double.parseDouble(request.getParameter("current"));
+            String code = request.getParameter("code");
+            String country = request.getParameter("country");
+            MonetaryUnitService.sharedInstance().create(new MonetaryUnit(UUID.randomUUID().toString(), name, high52week, low52week, current, code, country));
+            doGet(request, response);
+        } catch (NumberFormatException e){
+            throw new ServletLayerException();
+        }
     }
 
     private void task1(HttpServletRequest request, HttpServletResponse response) throws Exception{

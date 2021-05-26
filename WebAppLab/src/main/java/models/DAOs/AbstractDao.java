@@ -1,10 +1,14 @@
 package models.DAOs;
 
+import models.exceptions.DaoLayerException;
 import models.units.FinancialUnit;
 
 import java.util.List;
 
 public interface AbstractDao<T extends FinancialUnit> {
-    List<T> read() throws Exception;
-    void write(List<T> list) throws Exception;
+    void create(T obj) throws DaoLayerException;
+    List<T> readAll() throws DaoLayerException;
+    T readOne(String key) throws DaoLayerException;
+    void update(T obj) throws DaoLayerException;
+    void delete(String key) throws DaoLayerException;
 }

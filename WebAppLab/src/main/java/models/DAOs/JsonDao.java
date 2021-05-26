@@ -8,22 +8,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class JsonDao<T extends FinancialUnit> implements AbstractDao<T> {
-    File file;
+public class JsonDao<T extends FinancialUnit> extends AbstractFileDao<T> {
 
     public JsonDao(File file, Class clazz) throws Exception{
         this.file = file;
     }
 
     @Override
-    public List<T> read() throws Exception{
+    protected List<T> read() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         List<T> list = mapper.readValue(file, new TypeReference<List<T>>(){});
         return list;
     }
 
     @Override
-    public void write(List<T> list) throws IOException {
+    protected void write(List<T> list) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(file,list);
     }

@@ -4,14 +4,14 @@ import models.DAOs.AbstractDao;
 import models.DAOs.proxy.ProxyFabric;
 import models.Validator;
 import models.exceptions.DaoLayerException;
-import models.exceptions.ValidationException;
+import models.exceptions.ServiceLayerException;
+import models.units.Cryptocurrency;
 import models.units.FinancialUnit;
 import models.units.PreciousMetal;
 import services.components.FileFabric;
 import services.components.FileName;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
@@ -21,24 +21,31 @@ public class PreciousMetalService extends AbstractService {
 
     private static PreciousMetalService shared;
 
-    public static PreciousMetalService sharedInstance() throws Exception {
+    public static PreciousMetalService sharedInstance() throws DaoLayerException {
         if (null == shared){
             shared = new PreciousMetalService();
         }
         return shared;
     }
 
-    private PreciousMetalService() throws Exception {
-        switch (fileType){
-            case XML:
-                dao = new ProxyFabric<PreciousMetal>().getXmlDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
-                break;
-            case CSV:
-                dao = new ProxyFabric<PreciousMetal>().getCsvDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
-                break;
-            case JSON:
-                dao = new ProxyFabric<PreciousMetal>().getJsonDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
-                break;
+    private PreciousMetalService() throws DaoLayerException {
+        try{
+            switch (fileType){
+                case XML:
+                    dao = new ProxyFabric<PreciousMetal>().getXmlDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
+                    break;
+                case CSV:
+                    dao = new ProxyFabric<PreciousMetal>().getCsvDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
+                    break;
+                case JSON:
+                    dao = new ProxyFabric<PreciousMetal>().getJsonDaoProxy(FileFabric.getFile(FileName.PRECIOUS_METAL, fileType), PreciousMetal.class);
+                    break;
+                case DB:
+                    dao = new ProxyFabric<PreciousMetal>().getDBDaoProxy(PreciousMetal.class);
+                    break;
+            }
+        } catch (Exception e){
+            throw new DaoLayerException();
         }
         locker = new ReentrantLock();
     }
@@ -46,63 +53,55 @@ public class PreciousMetalService extends AbstractService {
     public List<PreciousMetal> getElements() throws DaoLayerException {
         locker.lock();
         try {
-            List<PreciousMetal> list = dao.read();
-            return list;
-        } catch (Exception exception){
-            throw new DaoLayerException();
+            return dao.readAll();
         } finally {
             locker.unlock();
         }
     }
 
-    public PreciousMetal getElement(String uuid) throws DaoLayerException, NoSuchElementException {
-        List<PreciousMetal> list = getElements();
-        return list.stream().filter(e -> e.uuid.equals(uuid)).findFirst().get();
-    }
-
-    public void create(PreciousMetal element) throws DaoLayerException, ValidationException {
-        Validator.sharedInstance().validate(element, PreciousMetal.class);
+    public PreciousMetal getElement(String uuid) throws DaoLayerException, ServiceLayerException {
         locker.lock();
         try {
-            List<PreciousMetal> list = dao.read();
-            list.add(element);
-            dao.write(list);
-        } catch (Exception exception){
-            throw new DaoLayerException();
+            return dao.readOne(uuid);
         } finally {
             locker.unlock();
         }
     }
 
-    public void update(PreciousMetal element) throws Exception, NoSuchElementException, ValidationException {
-        Validator.sharedInstance().validate(element, PreciousMetal.class);
+    public void create(PreciousMetal element) throws DaoLayerException, ServiceLayerException {
+        try {
+            Validator.sharedInstance().validate(element, PreciousMetal.class);
+        } catch (Exception e){
+            throw new ServiceLayerException();
+        }
+
         locker.lock();
         try {
-            List<PreciousMetal> list = dao.read();
-            PreciousMetal elem = list.stream().filter(e -> e.uuid.equals(element.uuid)).findFirst().get();
-            elem.setCode(element.code);
-            elem.setPrice(element.price);
-            elem.setName(element.name);
-            dao.write(list);
-        } catch(NoSuchElementException exception){
-            throw exception;
-        } catch (Exception exception){
-            throw new DaoLayerException();
+            dao.create(element);
         } finally {
             locker.unlock();
         }
     }
 
-    public void delete(String uuid) throws Exception, NoSuchElementException {
+    public void update(PreciousMetal element) throws DaoLayerException, ServiceLayerException {
+        try {
+            Validator.sharedInstance().validate(element, PreciousMetal.class);
+        } catch (Exception e){
+            throw new ServiceLayerException();
+        }
+
         locker.lock();
         try {
-            List<PreciousMetal> list = dao.read();
-            list.stream().filter(e -> e.uuid.equals(uuid)).findFirst().get();
-            dao.write(list.stream().filter(e -> !e.uuid.equals(uuid)).collect(Collectors.toList()));
-        } catch(NoSuchElementException exception){
-            throw exception;
-        } catch (Exception exception){
-            throw new DaoLayerException();
+            dao.update(element);
+        } finally {
+            locker.unlock();
+        }
+    }
+
+    public void delete(String uuid) throws ServiceLayerException, DaoLayerException {
+        locker.lock();
+        try {
+            dao.delete(uuid);
         } finally {
             locker.unlock();
         }

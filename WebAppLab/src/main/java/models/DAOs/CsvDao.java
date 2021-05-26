@@ -1,13 +1,13 @@
 package models.DAOs;
 
 import models.DAOs.mappers.CsvMapper;
+import models.exceptions.DaoLayerException;
 import models.units.FinancialUnit;
 
 import java.io.File;
 import java.util.List;
 
-public class CsvDao<T extends FinancialUnit> implements AbstractDao<T> {
-    File file;
+public class CsvDao<T extends FinancialUnit> extends AbstractFileDao<T> {
     Class clazz;
 
     public CsvDao(File file, Class clazz) throws Exception{
@@ -16,14 +16,14 @@ public class CsvDao<T extends FinancialUnit> implements AbstractDao<T> {
     }
 
     @Override
-    public List<T> read() throws Exception{
+    protected List<T> read() throws Exception{
         CsvMapper<T> mapper = new CsvMapper<T>();
         List<T> list = mapper.readValue(file, clazz);
         return list;
     }
 
     @Override
-    public void write(List<T> list) throws Exception {
+    protected void write(List<T> list) throws Exception {
         CsvMapper<T> mapper = new CsvMapper<T>();
         mapper.writeValue(file, list, clazz);
     }

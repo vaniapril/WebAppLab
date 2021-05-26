@@ -1,8 +1,15 @@
 package models.units.components;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Price {
+    @Column(name = "high52week")
     public double high52week;
+    @Column(name = "low52week")
     public double low52week;
+    @Column(name = "current")
     public double current;
 
     public double getHigh52week() {

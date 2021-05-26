@@ -1,6 +1,5 @@
 package models;
 
-import models.exceptions.ValidationException;
 import models.units.*;
 import models.units.components.Price;
 
@@ -38,17 +37,17 @@ public class Validator {
                 && validatePrice(financialUnit.price);
     }
 
-    public void validate(FinancialUnit financialUnit, Class clazz) throws ValidationException {
+    public void validate(FinancialUnit financialUnit, Class clazz) throws Exception {
         if (Cryptocurrency.class.equals(clazz)) {
-            if (!validateCryptocurrency((Cryptocurrency) financialUnit)) throw new ValidationException();
+            if (!validateCryptocurrency((Cryptocurrency) financialUnit)) throw new Exception();
         } else if (MonetaryUnit.class.equals(clazz)) {
-            if (!validateMonetaryUnit((MonetaryUnit) financialUnit)) throw new ValidationException();
+            if (!validateMonetaryUnit((MonetaryUnit) financialUnit)) throw new Exception();
         } else if (PreciousMetal.class.equals(clazz)) {
-            if (!validatePreciousUnit((PreciousMetal) financialUnit)) throw new ValidationException();
+            if (!validatePreciousUnit((PreciousMetal) financialUnit)) throw new Exception();
         } else if (Stock.class.equals(clazz)) {
-            if (!validateStock((Stock) financialUnit)) throw new ValidationException();
+            if (!validateStock((Stock) financialUnit)) throw new Exception();
         } else {
-            throw new ValidationException();
+            throw new Exception();
         }
     }
 

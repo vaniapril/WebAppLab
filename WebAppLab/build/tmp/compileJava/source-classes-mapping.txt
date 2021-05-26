@@ -1,71 +1,77 @@
+models/units/MonetaryUnit.java
+ models.units.MonetaryUnit
+services/components/FileName.java
+ services.components.FileName
+models/exceptions/ServiceLayerException.java
+ models.exceptions.ServiceLayerException
+models/exceptions/DaoLayerException.java
+ models.exceptions.DaoLayerException
+models/units/components/Identifiable.java
+ models.units.components.Identifiable
+models/DAOs/proxy/DaoProxyHandler.java
+ models.DAOs.proxy.DaoProxyHandler
+models/exceptions/ExceptionMessage.java
+ models.exceptions.ExceptionMessage
+models/exceptions/ServletLayerException.java
+ models.exceptions.ServletLayerException
+servlets/MainServlet.java
+ servlets.MainServlet
 models/DAOs/AbstractDao.java
  models.DAOs.AbstractDao
 models/units/PreciousMetal.java
  models.units.PreciousMetal
-models/units/FinancialUnit.java
- models.units.FinancialUnit
-models/exceptions/DaoLayerException.java
- models.exceptions.DaoLayerException
+models/DAOs/CsvDao.java
+ models.DAOs.CsvDao
 models/units/components/Price.java
  models.units.components.Price
-services/components/FileType.java
- services.components.FileType
-servlets/PreciousMetalServlet.java
- servlets.PreciousMetalServlet
+models/DAOs/mappers/CsvMapper.java
+ models.DAOs.mappers.CsvMapper
 models/units/Stock.java
  models.units.Stock
-services/components/FileFabric.java
- services.components.FileFabric
- services.components.FileFabric$1
-models/exceptions/ServiceLayerException.java
- models.exceptions.ServiceLayerException
-models/exceptions/ExceptionMessage.java
- models.exceptions.ExceptionMessage
-models/DAOs/proxy/ProxyFabric.java
- models.DAOs.proxy.ProxyFabric
+models/DAOs/DBDao.java
+ models.DAOs.DBDao
+models/DAOs/AbstractFileDao.java
+ models.DAOs.AbstractFileDao
+models/units/FinancialUnit.java
+ models.units.FinancialUnit
+models/DAOs/XMLDao.java
+ models.DAOs.XMLDao
+ models.DAOs.XMLDao$1
 models/DAOs/JsonDao.java
  models.DAOs.JsonDao
  models.DAOs.JsonDao$1
 models/Validator.java
  models.Validator
-servlets/MainServlet.java
- servlets.MainServlet
 models/units/Cryptocurrency.java
  models.units.Cryptocurrency
-models/DAOs/proxy/DaoProxyHandler.java
- models.DAOs.proxy.DaoProxyHandler
-models/DAOs/XMLDao.java
- models.DAOs.XMLDao
- models.DAOs.XMLDao$1
-models/units/MonetaryUnit.java
- models.units.MonetaryUnit
-services/components/FileName.java
- services.components.FileName
-servlets/CryptocurrencyServlet.java
- servlets.CryptocurrencyServlet
-models/exceptions/ValidationException.java
- models.exceptions.ValidationException
-servlets/StockServlet.java
- servlets.StockServlet
-servlets/MonetaryUnitServlet.java
- servlets.MonetaryUnitServlet
+services/components/FileType.java
+ services.components.FileType
 services/MonetaryUnitService.java
  services.MonetaryUnitService
  services.MonetaryUnitService$1
-services/CryptocurrencyService.java
- services.CryptocurrencyService
- services.CryptocurrencyService$1
 services/AbstractService.java
  services.AbstractService
  services.AbstractService$1
  services.AbstractService$2
+servlets/StockServlet.java
+ servlets.StockServlet
+servlets/CryptocurrencyServlet.java
+ servlets.CryptocurrencyServlet
+services/components/FileFabric.java
+ services.components.FileFabric
+ services.components.FileFabric$1
 services/PreciousMetalService.java
  services.PreciousMetalService
  services.PreciousMetalService$1
 services/StockService.java
  services.StockService
  services.StockService$1
-models/DAOs/mappers/CsvMapper.java
- models.DAOs.mappers.CsvMapper
-models/DAOs/CsvDao.java
- models.DAOs.CsvDao
+servlets/MonetaryUnitServlet.java
+ servlets.MonetaryUnitServlet
+servlets/PreciousMetalServlet.java
+ servlets.PreciousMetalServlet
+models/DAOs/proxy/ProxyFabric.java
+ models.DAOs.proxy.ProxyFabric
+services/CryptocurrencyService.java
+ services.CryptocurrencyService
+ services.CryptocurrencyService$1

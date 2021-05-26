@@ -1,0 +1,36 @@
+<ArrayList>
+    <item>
+        <type>stock</type>
+        <uuid>883443ec-6df1-49be-8aff-35416ed96853</uuid>
+        <name>Microsoft</name>
+        <price>
+            <high52week>261.48</high52week>
+            <low52week>166.11</low52week>
+            <current>260.74</current>
+        </price>
+        <code>MSFT</code>
+
+    </item>
+    <item>
+        <type>stock</type>
+        <uuid>55c0295c-cfab-42c0-8b4d-610aaef55773</uuid>
+        <name>Apple</name>
+        <price>
+            <high52week>145.09</high52week>
+            <low52week>53.15</low52week>
+            <current>126.0</current>
+        </price>
+        <code>AAPL</code>
+    </item>
+    <item>
+        <type>stock</type>
+        <uuid>411a8de8-aaa8-427a-9dec-22c99a1eaefb</uuid>
+        <name>Tesla</name>
+        <price>
+            <high52week>900.4</high52week>
+            <low52week>70.1</low52week>
+            <current>693.73</current>
+        </price>
+        <code>TSLA</code>
+    </item>
+</ArrayList>
